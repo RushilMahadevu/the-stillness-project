@@ -1,143 +1,72 @@
-# Documents
+# The Stillness Project
 
-Documents is a modern documentation starter kit built with **Next.js**, **React**, **Tailwind CSS**, and **TypeScript**. Designed for businesses, product teams, and technical writers, it provides a scalable and efficient foundation for building documentation websites, product manuals, and knowledge bases.
+A research study exploring how people experience quiet moments and stillness in our modern, connected world.
 
-> **Demo**: [https://rubix-documents.vercel.app](https://rubix-documents.vercel.app)
+## About This Project
 
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Top Language](https://img.shields.io/github/languages/top/rubixvi/rubix-documents)](https://github.com/rubixvi/rubix-documents)
+The Stillness Project investigates the diverse ways people find, experience, and value quiet moments in contemporary life. Through interviews and surveys, this research examines how cultural backgrounds, technology use, and personal circumstances shape our relationship with silence and contemplation.
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/rubixvi/rubix-documents)
-[![Last Commit](https://img.shields.io/github/last-commit/rubixvi/rubix-documents)](https://github.com/rubixvi/rubix-documents/commits)
-[![GitHub issues](https://img.shields.io/github/issues/rubixvi/rubix-documents)](https://github.com/rubixvi/rubix-documents/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/rubixvi/rubix-documents)](https://github.com/rubixvi/rubix-documents/pulls)
+## Participate in the Research
 
-[![GitHub stars](https://img.shields.io/github/stars/rubixvi/rubix-documents)](https://github.com/rubixvi/rubix-documents/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/rubixvi/rubix-documents)](https://github.com/rubixvi/rubix-documents/network)
-[![GitHub repo size](https://img.shields.io/github/repo-size/rubixvi/rubix-documents)](https://github.com/rubixvi/rubix-documents)
+### Quick Survey (4-6 minutes)
+Complete our anonymous survey about your experiences with stillness and quiet moments.
+**[Take the Survey →](https://forms.gle/G3FbndqjLWZeeJx56)**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frubixvi%2Frubix-documents&project-name=my-documents&repository-name=my-documents&demo-title=Documents&demo-description=This%20Document%20Starter%20Kit%20is%20developed%20with%20Next.js%2C%20Tailwind%20CSS%20and%20TypeScript.%20It%20serves%20as%20a%20flexible%20and%20scalable%20foundation%20for%20building%20documentation%20websites%20or%20content-driven%20projects.&demo-url=https%3A%2F%2Frubix-documents.vercel.app%2F&demo-image=https%3A%2F%2Fgithub.com%2Frubixvi%2Frubix-documents%2Fblob%2Fmain%2Fpublic%2Fscreens%2Fscreen-1.png)
+### Personal Interview (35 minutes)  
+Share your story in a conversational interview about how you experience quiet in daily life.
+**[Schedule an Interview →](https://koalendar.com/e/the-stillness-project)**
 
----
+## Research Questions
 
-## Overview
+This study explores:
+- How do people from different backgrounds define and experience stillness?
+- What role does technology play in our access to quiet moments?
+- How do cultural traditions influence approaches to silence and contemplation?
+- What challenges do people face in finding stillness in modern life?
 
-Documents enables businesses to deliver clear, structured, and accessible product documentation — with a focus on performance, usability, and maintainability.
+## Study Timeline
 
-Built for technical and content-driven projects, this starter kit supports Markdown (MDX), React components, and a flexible content architecture designed for scale.
+- **Data Collection**: July - September 2025
+- **Analysis**: October 2025  
+- **Results**: November 2025
 
----
+## Research Ethics
 
-## Features
+- All participation is voluntary and confidential
+- Survey responses are completely anonymous
+- Interview participants use pseudonyms only
+- Data is securely stored and used solely for research purposes
 
-### Content Management
+## Contact
 
-- MDX support (Markdown with React components)
-- Reusable custom components
-- Mermaid.js for diagrams and flowcharts
-- Tables and LaTeX math support
-
-### Navigation & Structure
-
-- Multi-level navigation
-- Auto-generated table of contents
-- Content pagination
-- Code snippet switcher with copy functionality
-
-### Development Experience
-
-- Syntax highlighting with theme support
-- Enhanced code blocks with titles and line highlighting
-- Built-in light/dark mode with auto-detection
-- SEO-ready with dynamic meta tags
-
-### Search & Future Enhancements
-
-- Fuzzy search with term highlighting
-- Planned: AI-powered knowledgebase tools
+**Researcher**: Rushil Mahadevu  
+**Email**: [rushil.mahadevu@gmail.com](mailto:rushil.mahadevu@gmail.com)
 
 ---
 
-## Quick Start
+## Technical Information
 
-### Installation
+This documentation website is built with:
+- **Next.js** - React framework
+- **MDX** - Markdown with React components
+- **Tailwind CSS** - Styling
+- **TypeScript** - Type safety
+
+### Local Development
 
 ```bash
-git clone https://github.com/rubixvi/rubix-documents.git
-cd rubix-documents
+git clone https://github.com/RushilMahadevu/the-stillness-project.git
+cd the-stillness-project
 npm install
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to view your project locally.
+Visit [http://localhost:3000](http://localhost:3000) to view the site locally.
 
-**For production:**
+### Deployment
 
-```bash
-npm run build
-npm run start
-```
-
-Deploy to Vercel for automated builds and hosting.
+The site is deployed on Vercel and automatically updates when changes are pushed to the main branch.
 
 ---
 
-## Usage
-
-Documents is designed to support:
-
-- Product documentation
-- Technical manuals
-- Internal guides
-- Business knowledge bases
-
----
-
-## Screenshots
-
-![Main Screen](./public/screens/screen-1.png)
-_Main Screen_
-
-![Document Screen](./public/screens/screen-2.png)
-_Document Screen_
-
-![Document Footer](./public/screens/screen-3.png)
-_Document Footer_
-
-![Document Search](./public/screens/screen-4.png)
-_Document Search_
-
-![Main Dark Screen](./public/screens/screen-5.png)
-_Main Dark Mode Screen_
-
-![Document Dark Screen](./public/screens/screen-6.png)
-_Document Dark Mode Screen_
-
----
-
-## Contributing
-
-We welcome contributions to improve this project.
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Open a pull request
-
----
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
-
----
-
-## Contact
-
-For support or inquiries:
-
-Vincent Vu — [@rubixvi](https://x.com/rubixvi)
-
-Rubix Studios — [https://rubixstudios.com.au](https://rubixstudios.com.au)
-
-**Project:** [https://github.com/rubixvi/rubix-documents](https://github.com/rubixvi/rubix-documents)
+*Your perspective on stillness matters. Whether you find quiet moments essential or struggle to find them at all, your experience contributes to important research about modern life and well-being.*

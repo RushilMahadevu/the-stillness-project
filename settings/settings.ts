@@ -1,29 +1,35 @@
-export const url = "https://rubix-documents.vercel.app"
+export const url = "https://the-stillness-project.vercel.app"
 export const siteicon = "/icon.png"
 
 export const gtm = "GTM-XXXXXXX"
-export const gtmconnected = true
+export const gtmconnected = false
 
-export const sitename = "Documents"
+export const sitename = "The Stillness Project"
 export const description =
-  "This comprehensive documentation template, crafted with Next.js and available as open-source, delivers a sleek and responsive design, tailored to meet all your project documentation requirements."
+  "Independent academic research exploring cultural attitudes toward stillness, silence, and quiet moments in modern society. Join our study through interviews or surveys to share your perspective on stillness in today's connected world."
 export const keywords = [
-  "Next.js",
-  "documentation",
-  "Rubix Studios",
-  "open source",
-  "SEO",
+  "stillness research",
+  "silence study",
+  "cultural attitudes",
+  "academic research",
+  "quiet moments",
+  "modern society",
+  "research participation",
+  "interview study",
+  "survey research",
+  "mindfulness",
+  "reflection",
 ]
 export const urlimage = "/images/og-image.png"
-export const imagealt = "Rubix Studios Documentation"
-export const twitterhandle = "@RubixStudios"
+export const imagealt = "The Stillness Project - Research on Stillness in Modern Society"
+export const twitterhandle = "@StillnessProject"
 
-export const companyname = "Rubix Studios"
-export const companylink = "https://rubixstudios.com.au"
+export const companyname = "The Stillness Project"
+export const companylink = "https://the-stillness-project.vercel.app"
 
-export const branding = true
+export const branding = false
 export const rightsidebar = true
-export const feedbackedit = true
+export const feedbackedit = false
 export const tableofcontent = true
 export const totopscroll = true
 

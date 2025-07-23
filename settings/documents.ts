@@ -2,21 +2,21 @@ import { Paths } from "@/lib/pageroutes"
 
 export const Documents: Paths[] = [
   {
-    heading: "Introduction",
-    title: "Basic Setup",
-    href: "/basic-setup",
+    heading: "About The Research",
+    title: "Project Overview",
+    href: "/project-overview",
     items: [
       {
-        title: "Installation",
-        href: "/installation",
+        title: "Research Objectives",
+        href: "/objectives",
       },
       {
-        title: "Setup",
-        href: "/setup",
+        title: "Methodology",
+        href: "/methodology",
       },
       {
-        title: "Changelog",
-        href: "/changelog",
+        title: "Timeline",
+        href: "/timeline",
       },
     ],
   },
@@ -24,29 +24,21 @@ export const Documents: Paths[] = [
     spacer: true,
   },
   {
-    title: "Navigation",
-    href: "/navigation",
-    heading: "Documents",
-  },
-  {
-    title: "Structure",
-    href: "/structure",
+    title: "How to Participate",
+    href: "/participation",
+    heading: "Get Involved",
     items: [
       {
-        title: "Deep",
-        href: "/deep",
-        items: [
-          {
-            title: "Deeper",
-            href: "/deeper",
-            items: [
-              {
-                title: "Even deeper",
-                href: "/even-deeper",
-              },
-            ],
-          },
-        ],
+        title: "Survey (4-6 minutes)",
+        href: "/survey",
+      },
+      {
+        title: "Interview (35 minutes)",
+        href: "/interview",
+      },
+      {
+        title: "Requirements",
+        href: "/requirements",
       },
     ],
   },
@@ -54,46 +46,30 @@ export const Documents: Paths[] = [
     spacer: true,
   },
   {
-    title: "Markdown",
-    href: "/markdown",
-    heading: "Components",
+    title: "Study Details",
+    href: "/study-details",
+    heading: "Research Information",
     items: [
       {
-        title: "Cards",
-        href: "/cards",
+        title: "Interview Topics",
+        href: "/interview-topics",
       },
       {
-        title: "Diagrams",
-        href: "/diagrams",
-      },
-      {
-        title: "Filetree",
-        href: "/filetree",
-      },
-      {
-        title: "Lists",
-        href: "/lists",
-      },
-      {
-        title: "Maths",
-        href: "/maths",
-      },
-      {
-        title: "Notes",
-        href: "/notes",
-      },
-      {
-        title: "Steps",
-        href: "/steps",
-      },
-      {
-        title: "Table",
-        href: "/table",
-      },
-      {
-        title: "Tabs",
-        href: "/tabs",
+        title: "Privacy & Data",
+        href: "/privacy",
       },
     ],
+  },
+  {
+    spacer: true,
+  },
+  {
+    title: "About the Researcher",
+    href: "/researcher",
+    heading: "Background",
+  },
+  {
+    title: "Research Updates",
+    href: "/updates",
   },
 ]

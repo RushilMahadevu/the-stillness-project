@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Link from "next/link"
 
 import { Company } from "@/lib/meta"
@@ -11,25 +10,24 @@ export function Footer() {
           &copy; {new Date().getFullYear()}{" "}
           <Link className="font-semibold" href={Company.link}>
             {Company.name}
-          </Link>
-          .
+          </Link>{" "}
+          - Academic Research Study
         </p>
-        {Company.branding !== false && (
-          <div className="hidden text-center md:block">
-            <Link
-              className="font-semibold"
-              href="https://rubixstudios.com.au"
-              target="_blank"
-            >
-              <Image
-                src="/logo.svg"
-                alt="Rubix Studios Logo"
-                width={30}
-                height={30}
-              />
-            </Link>
-          </div>
-        )}
+        <div className="text-center text-xs">
+          <Link
+            className="hover:underline"
+            href="/docs/study-details/privacy"
+          >
+            Privacy Policy
+          </Link>
+          <span className="mx-2">•</span>
+          <Link
+            className="hover:underline"
+            href="/contact"
+          >
+            Contact Researcher
+          </Link>
+        </div>
       </div>
     </footer>
   )

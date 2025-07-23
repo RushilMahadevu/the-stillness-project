@@ -1,7 +1,7 @@
 {
-  "name": "rubix-documents",
-  "version": "1.0.1",
-  "private": false,
+  "name": "the-stillness-project",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -60,6 +60,7 @@
     "@types/react-dom": "^19.1.6",
     "@typescript-eslint/parser": "^8.37.0",
     "autoprefixer": "^10.4.21",
+    "esbuild-register": "^3.6.0",
     "eslint": "^9.31.0",
     "eslint-config-next": "^15.4.2",
     "husky": "^9.1.7",
