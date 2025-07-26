@@ -2,23 +2,9 @@ import { Paths } from "@/lib/pageroutes"
 
 export const Documents: Paths[] = [
   {
-    heading: "About The Research",
     title: "Project Overview",
     href: "/project-overview",
-    items: [
-      {
-        title: "Research Objectives",
-        href: "/objectives",
-      },
-      {
-        title: "Methodology",
-        href: "/methodology",
-      },
-      {
-        title: "Timeline",
-        href: "/timeline",
-      },
-    ],
+    heading: "About The Research",
   },
   {
     spacer: true,
@@ -67,9 +53,5 @@ export const Documents: Paths[] = [
     title: "About the Researcher",
     href: "/researcher",
     heading: "Background",
-  },
-  {
-    title: "Research Updates",
-    href: "/updates",
   },
 ]
