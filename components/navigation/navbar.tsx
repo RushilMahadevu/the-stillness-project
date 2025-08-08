@@ -12,21 +12,25 @@ import { ModeToggle } from "@/components/navigation/theme-toggle"
 
 export function Navbar() {
   return (
-    <nav className="bg-opacity-5 sticky top-0 z-50 h-16 w-full border-b px-2 backdrop-blur-xl backdrop-filter md:px-4">
+    <nav className="bg-background/80 sticky top-0 z-50 h-16 w-full border-b border-border/50 backdrop-blur-xl backdrop-filter md:px-4">
       <div className="mx-auto flex h-full items-center justify-between p-1 sm:p-3 md:gap-2">
         <div className="flex items-center gap-5">
           <SheetLeft />
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-8">
             <div className="hidden md:flex">
               <Logo />
             </div>
-            <div className="text-muted-foreground hidden items-center gap-5 text-sm font-medium md:flex">
+            <div className="text-muted-foreground hidden items-center gap-6 text-sm font-medium md:flex">
               <NavMenu />
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2 text-xs text-muted-foreground bg-accent/20 px-3 py-1.5 rounded-full border">
+            <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
+            Study Active
+          </div>
           <Search />
           <div className="flex gap-2 sm:ml-0">
             {GitHubLink.href && (

@@ -14,6 +14,7 @@
     "update": "npx npm-check-updates -u && npm install && npm run clean",
     "generate-content-json": "ts-node scripts/content.ts",
     "generate-content-json:ide": "node -r esbuild-register scripts/content.ts",
+    "validate-content": "node -r esbuild-register scripts/validate-content.ts",
     "prepare": "husky"
   },
   "dependencies": {

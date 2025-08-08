@@ -5,31 +5,31 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.98 0.005 240);
-  --foreground: oklch(0.25 0.015 220);
+  --background: oklch(0.99 0.002 240);
+  --foreground: oklch(0.2 0.015 220);
   --card: oklch(0.995 0.003 240);
   --card-foreground: oklch(0.25 0.015 220);
   --popover: oklch(0.995 0.003 240);
   --popover-foreground: oklch(0.25 0.015 220);
-  --primary: oklch(0 0 0);
+  --primary: oklch(0.15 0.02 220);
   --primary-foreground: oklch(0.98 0.005 240);
-  --secondary: oklch(0.92 0.01 210);
-  --secondary-foreground: oklch(0.35 0.02 220);
-  --muted: oklch(0.94 0.008 215);
-  --muted-foreground: oklch(0.5 0.02 220);
-  --accent: oklch(0.88 0.02 200);
-  --accent-foreground: oklch(0.35 0.02 220);
+  --secondary: oklch(0.94 0.008 210);
+  --secondary-foreground: oklch(0.3 0.02 220);
+  --muted: oklch(0.96 0.005 215);
+  --muted-foreground: oklch(0.45 0.015 220);
+  --accent: oklch(0.92 0.01 200);
+  --accent-foreground: oklch(0.3 0.02 220);
   --destructive: oklch(0.6 0.15 15);
   --destructive-foreground: oklch(0.98 0.005 240);
-  --border: oklch(0.88 0.01 215);
-  --input: oklch(0.92 0.008 215);
-  --ring: oklch(0.55 0.08 220);
+  --border: oklch(0.9 0.008 215);
+  --input: oklch(0.94 0.005 215);
+  --ring: oklch(0.4 0.1 220);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
+  --radius: 0.75rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -311,4 +311,99 @@ span.katex-html {
   to {
     height: 0;
   }
+}
+
+/* Custom improvements */
+body {
+  font-feature-settings: "rlig" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-feature-settings: "rlig" 1, "calt" 1;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+  line-height: 1.7;
+}
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Improved prose styles for content */
+.prose {
+  @apply text-foreground;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  @apply text-foreground font-semibold;
+  text-wrap: balance;
+}
+
+.prose p {
+  @apply text-muted-foreground;
+  text-wrap: pretty;
+  line-height: 1.7;
+}
+
+.prose a {
+  @apply text-primary hover:text-primary/80;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.prose a:hover {
+  border-bottom-color: currentColor;
+}
+
+/* Breadcrumb specific styles */
+[data-slot="breadcrumb-list"] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+[data-slot="breadcrumb-item"] {
+  list-style: none;
+}
+
+/* Ensure no list styling appears anywhere in breadcrumbs */
+nav[aria-label="breadcrumb"] ol,
+nav[aria-label="breadcrumb"] ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav[aria-label="breadcrumb"] li {
+  list-style: none;
 }

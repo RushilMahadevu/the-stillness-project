@@ -87,13 +87,13 @@ function TimelinePhase({
 
 export default function Progress() {
   const metrics: StudyMetrics = {
-    surveyResponses: 22,
-    interviewsCompleted: 0,
+    surveyResponses: 105,
+    interviewsCompleted: 1,
     demographicDiversity: 100,
-    targetSurvey: 200,
+    targetSurvey: 150,
     targetInterviews: 15,
     startDate: "July 2025",
-    estimatedCompletion: "September 2025"
+    estimatedCompletion: "September 2025" 
   }
   
   const phases = [

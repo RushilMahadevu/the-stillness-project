@@ -1,22 +1,8 @@
 export const Documents = [
     {
-        heading: "About The Research",
         title: "Project Overview",
         href: "/project-overview",
-        items: [
-            {
-                title: "Research Objectives",
-                href: "/objectives",
-            },
-            {
-                title: "Methodology",
-                href: "/methodology",
-            },
-            {
-                title: "Timeline",
-                href: "/timeline",
-            },
-        ],
+        heading: "About The Research",
     },
     {
         spacer: true,
@@ -65,9 +51,5 @@ export const Documents = [
         title: "About the Researcher",
         href: "/researcher",
         heading: "Background",
-    },
-    {
-        title: "Research Updates",
-        href: "/updates",
     },
 ];

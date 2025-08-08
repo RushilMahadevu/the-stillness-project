@@ -64,7 +64,8 @@ function findDocumentBySlug(slug: string): Paths | null {
 async function ensureDirectoryExists(dir: string) {
   try {
     await fs.access(dir)
-  } catch {
+  } catch (error) {
+    console.log(`Creating directory: ${dir}`)
     await fs.mkdir(dir, { recursive: true })
   }
 }
@@ -144,64 +145,74 @@ function cleanContentForSearch(content: string): string {
 }
 
 async function processMdxFile(filePath: string) {
-  const rawMdx = await fs.readFile(filePath, "utf-8")
-  const { content, data: frontmatter } = grayMatter(rawMdx)
+  try {
+    const rawMdx = await fs.readFile(filePath, "utf-8")
+    const { content, data: frontmatter } = grayMatter(rawMdx)
 
-  const processed = await unified()
-    .use(remarkParse)
-    .use(remarkMdx)
-    .use(removeCustomComponents)
-    .use(remarkStringify)
-    .process(content)
+    const processed = await unified()
+      .use(remarkParse)
+      .use(remarkMdx)
+      .use(removeCustomComponents)
+      .use(remarkStringify)
+      .process(content)
 
-  const documentContent = String(processed.value)
+    const documentContent = String(processed.value)
 
-  const headings =
-    documentContent
-      .match(/^##\s+(.+)$/gm)
-      ?.map((h) => h.replace(/^##\s+/, "").trim()) || []
+    const headings =
+      documentContent
+        .match(/^##\s+(.+)$/gm)
+        ?.map((h) => h.replace(/^##\s+/, "").trim()) || []
 
-  const extractedKeywords = new Set([
-    ...(frontmatter.keywords || []),
-    ...headings,
-    ...(documentContent.match(/\*\*([^*]+)\*\*/g) || []).map((m) =>
-      m.replace(/\*\*/g, "").trim()
-    ),
-    ...(documentContent.match(/`([^`]+)`/g) || []).map((m) =>
-      m.replace(/`/g, "").trim()
-    ),
-  ])
+    const extractedKeywords = new Set([
+      ...(frontmatter.keywords || []),
+      ...headings,
+      ...(documentContent.match(/\*\*([^*]+)\*\*/g) || []).map((m) =>
+        m.replace(/\*\*/g, "").trim()
+      ),
+      ...(documentContent.match(/`([^`]+)`/g) || []).map((m) =>
+        m.replace(/`/g, "").trim()
+      ),
+    ])
 
-  const slug = createSlug(filePath)
-  const matchedDoc = findDocumentBySlug(slug)
+    const slug = createSlug(filePath)
+    const matchedDoc = findDocumentBySlug(slug)
 
-  return {
-    slug,
-    title:
-      frontmatter.title ||
-      (matchedDoc && isRoute(matchedDoc) ? matchedDoc.title : "Untitled"),
-    description: frontmatter.description || "",
-    content: documentContent,
-    _searchMeta: {
-      cleanContent: cleanContentForSearch(documentContent),
-      headings,
-      keywords: Array.from(extractedKeywords),
-    },
+    return {
+      slug,
+      title:
+        frontmatter.title ||
+        (matchedDoc && isRoute(matchedDoc) ? matchedDoc.title : "Untitled"),
+      description: frontmatter.description || "",
+      content: documentContent,
+      _searchMeta: {
+        cleanContent: cleanContentForSearch(documentContent),
+        headings,
+        keywords: Array.from(extractedKeywords),
+      },
+    }
+  } catch (error) {
+    console.error(`Error processing file ${filePath}:`, error)
+    throw error
   }
 }
 
 async function getMdxFiles(dir: string): Promise<string[]> {
   let files: string[] = []
-  const items = await fs.readdir(dir, { withFileTypes: true })
+  try {
+    const items = await fs.readdir(dir, { withFileTypes: true })
 
-  for (const item of items) {
-    const fullPath = path.join(dir, item.name)
-    if (item.isDirectory()) {
-      const subFiles = await getMdxFiles(fullPath)
-      files = files.concat(subFiles)
-    } else if (item.name.endsWith(".mdx")) {
-      files.push(fullPath)
+    for (const item of items) {
+      const fullPath = path.join(dir, item.name)
+      if (item.isDirectory()) {
+        const subFiles = await getMdxFiles(fullPath)
+        files = files.concat(subFiles)
+      } else if (item.name.endsWith(".mdx")) {
+        files.push(fullPath)
+      }
     }
+  } catch (error) {
+    console.error(`Error reading directory ${dir}:`, error)
+    throw error
   }
 
   return files
@@ -209,14 +220,23 @@ async function getMdxFiles(dir: string): Promise<string[]> {
 
 async function convertMdxToJson() {
   try {
+    console.log("Starting MDX to JSON conversion...")
     await ensureDirectoryExists(outputDir)
 
     const mdxFiles = await getMdxFiles(docsDir)
+    console.log(`Found ${mdxFiles.length} MDX files to process`)
     const combinedData = []
 
     for (const file of mdxFiles) {
-      const jsonData = await processMdxFile(file)
-      combinedData.push(jsonData)
+      try {
+        const jsonData = await processMdxFile(file)
+        combinedData.push(jsonData)
+        console.log(`✓ Processed: ${path.relative(process.cwd(), file)}`)
+      } catch (error) {
+        console.error(`✗ Failed to process: ${path.relative(process.cwd(), file)}`)
+        console.error(error)
+        // Continue processing other files instead of stopping
+      }
     }
 
     const combinedOutputPath = path.join(outputDir, "documents.json")
@@ -224,8 +244,10 @@ async function convertMdxToJson() {
       combinedOutputPath,
       JSON.stringify(combinedData, null, 2)
     )
+    console.log(`✓ Successfully generated ${combinedData.length} documents`)
   } catch (err) {
     console.error("Error processing MDX files:", err)
+    process.exit(1)
   }
 }
 

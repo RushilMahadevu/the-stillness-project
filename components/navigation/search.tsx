@@ -34,22 +34,32 @@ export default function Search() {
   const debouncedSearch = useMemo(
     () =>
       debounce((input) => {
-        setIsLoading(true)
-        const results = advanceSearch(input.trim())
-        setFilteredResults(results)
-        setIsLoading(false)
+        try {
+          setIsLoading(true)
+          const results = advanceSearch(input.trim())
+          setFilteredResults(results)
+        } catch (error) {
+          console.error("Search error:", error)
+          setFilteredResults([])
+        } finally {
+          setIsLoading(false)
+        }
       }, 300),
     []
   )
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (isOpen && event.key === "Enter" && filteredResults.length > 2) {
-        const selected = filteredResults[0]
-        if ("href" in selected) {
-          window.location.href = `/docs${selected.href}`
-          setIsOpen(false)
+      try {
+        if (isOpen && event.key === "Enter" && filteredResults.length > 2) {
+          const selected = filteredResults[0]
+          if ("href" in selected) {
+            window.location.href = `/docs${selected.href}`
+            setIsOpen(false)
+          }
         }
+      } catch (error) {
+        console.error("Navigation error:", error)
       }
     }
 

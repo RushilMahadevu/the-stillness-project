@@ -18,13 +18,15 @@ interface SearchDocument {
   _searchMeta: SearchMeta
 }
 
-export type search = {
+export type SearchResult = {
   title: string
   href: string
   snippet?: string
   description?: string
   relevance?: number
 }
+
+export type search = SearchResult
 
 const searchData = searchJson as SearchDocument[]
 
@@ -273,41 +275,46 @@ function extractSnippet(content: string, query: string): string {
   return snippet
 }
 
-export function advanceSearch(query: string) {
+export function advanceSearch(query: string): SearchResult[] {
   const lowerQuery = query.toLowerCase().trim()
   const queryWords = lowerQuery.split(/\s+/).filter((word) => word.length >= 3)
 
   if (queryWords.length === 0) return []
 
-  const chunks = chunkArray(searchData, 100)
+  try {
+    const chunks = chunkArray(searchData, 100)
 
-  const results = chunks.flatMap((chunk) =>
-    chunk
-      .map((doc) => {
-        const relevanceScore = calculateRelevance(
-          queryWords.join(" "),
-          doc.title,
-          doc._searchMeta.cleanContent,
-          doc._searchMeta.headings,
-          doc._searchMeta.keywords
-        )
+    const results = chunks.flatMap((chunk) =>
+      chunk
+        .map((doc) => {
+          const relevanceScore = calculateRelevance(
+            queryWords.join(" "),
+            doc.title,
+            doc._searchMeta.cleanContent,
+            doc._searchMeta.headings,
+            doc._searchMeta.keywords
+          )
 
-        const snippet = extractSnippet(doc._searchMeta.cleanContent, lowerQuery)
-        const highlightedSnippet = highlight(snippet, queryWords.join(" "))
+          const snippet = extractSnippet(doc._searchMeta.cleanContent, lowerQuery)
+          const highlightedSnippet = highlight(snippet, queryWords.join(" "))
 
-        return {
-          title: doc.title,
-          href: doc.slug,
-          snippet: highlightedSnippet,
-          description: doc.description || "",
-          relevance: relevanceScore,
-        }
-      })
-      .filter((doc) => doc.relevance > 0)
-      .sort((a, b) => b.relevance - a.relevance)
-  )
+          return {
+            title: doc.title,
+            href: doc.slug,
+            snippet: highlightedSnippet,
+            description: doc.description || "",
+            relevance: relevanceScore,
+          } as SearchResult
+        })
+        .filter((doc) => (doc.relevance ?? 0) > 0)
+        .sort((a, b) => (b.relevance ?? 0) - (a.relevance ?? 0))
+    )
 
-  return results.slice(0, 10)
+    return results.slice(0, 10)
+  } catch (error) {
+    console.error("Search error:", error)
+    return []
+  }
 }
 
 function chunkArray<T>(array: T[], chunkSize: number): T[][] {

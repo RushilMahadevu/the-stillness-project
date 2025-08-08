@@ -19,7 +19,9 @@ export default function PageBreadcrumb({ paths }: { paths: string[] }) {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <LuHouse className="h-4" />
+              <Link href="/" aria-label="Home">
+                <LuHouse className="h-4" />
+              </Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
 

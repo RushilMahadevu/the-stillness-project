@@ -2,7 +2,7 @@ import { Paths } from "@/lib/pageroutes"
 
 export const Documents: Paths[] = [
   {
-    title: "Project Overview",
+    title: "🎯 Project Overview",
     href: "/project-overview",
     heading: "About The Research",
   },
@@ -10,20 +10,20 @@ export const Documents: Paths[] = [
     spacer: true,
   },
   {
-    title: "How to Participate",
+    title: "🤝 How to Participate",
     href: "/participation",
     heading: "Get Involved",
     items: [
       {
-        title: "Survey (4-6 minutes)",
+        title: "📝 Survey (4-6 minutes)",
         href: "/survey",
       },
       {
-        title: "Interview (35 minutes)",
+        title: "💬 Interview (15 minutes)",
         href: "/interview",
       },
       {
-        title: "Requirements",
+        title: "📋 Requirements",
         href: "/requirements",
       },
     ],
@@ -32,16 +32,16 @@ export const Documents: Paths[] = [
     spacer: true,
   },
   {
-    title: "Study Details",
+    title: "📊 Study Details",
     href: "/study-details",
     heading: "Research Information",
     items: [
       {
-        title: "Interview Topics",
+        title: "💭 Interview Topics",
         href: "/interview-topics",
       },
       {
-        title: "Privacy & Data",
+        title: "🔒 Privacy & Data",
         href: "/privacy",
       },
     ],
@@ -50,8 +50,16 @@ export const Documents: Paths[] = [
     spacer: true,
   },
   {
-    title: "About the Researcher",
+    title: "👨‍🎓 About the Researcher",
     href: "/researcher",
     heading: "Background",
+  },
+  {
+    spacer: true,
+  },
+  {
+    title: "📈 Updates",
+    href: "/updates",
+    heading: "Latest News",
   },
 ]

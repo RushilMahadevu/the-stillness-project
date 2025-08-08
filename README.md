@@ -12,7 +12,7 @@ The Stillness Project investigates the diverse ways people find, experience, and
 Complete our anonymous survey about your experiences with stillness and quiet moments.
 **[Take the Survey →](https://forms.gle/G3FbndqjLWZeeJx56)**
 
-### Personal Interview (35 minutes)  
+### Personal Interview (15 minutes)  
 Share your story in a conversational interview about how you experience quiet in daily life.
 **[Schedule an Interview →](https://koalendar.com/e/the-stillness-project)**
 
